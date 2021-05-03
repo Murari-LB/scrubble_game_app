@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @player.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @player.last_name %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @player.contact_number %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @player.email %>
+</p>
+
+<p>
+  <strong>Game details</strong>
+</p>
+
+<p>
+  <strong>Number of wins: <%=@win%></strong>
+</p>
+
+<p>
+  <strong>Number of losses: <%=@los%> </strong>
+</p>
+
+<p>
+  <strong>Average score: <%=@player&.participants.pluck(:score).sum / @player&.participants.pluck(:score).count  if @player&.participants.count > 0 %></strong>
+</p>
+
+<p>
+  <strong>Highest score: <%=@player&.participants.order('score DESC')&.first&.score || 0%></strong>
+</p>
+
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Back', players_path %>
